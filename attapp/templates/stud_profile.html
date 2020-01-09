@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>adminhome</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+		<style>
+		</style>  
+	</head>
+	<body class="bi">
+		<div class="display">
+			<div class="navbar">
+				<h1><u>STUDENT</u></h1>
+				<ul>
+					<li> <a href="{%url 'studenthome'%}">Home</a></li>
+					<li> <a href="#">My Profile</a>
+						<div class="submenu">
+							<ul>
+								<li><a href="{%url 'stud_profile'%}">Personal details</a></li>
+								<li><a href="{%url 'viewmyattndc'%}">Atendance</a></li>
+								<li><a href="{%url 'viewmymark'%}">Mark</a></li>
+							</ul>
+					</li>
+					<li> <a href="{%url 'view_studtimetable'%}">Timetable</a></li>
+					<li> <a href="#">Leave</a>
+						<div class="submenu">
+							<ul>
+								<li><a href="{%url 'stud_applyleave'%}">Apply Leave</a></li>
+								<li><a href="{%url 'stu_appliedleave'%}">Applied Leave</a></li>
+								
+							</ul>
+							</div>
+					</li>
+					<li>
+						<form action="{% url 'logout' %}" method=POST >
+							{% csrf_token %}
+							<input type="submit" value="logout" name="logout" class="logoutbutton">
+						</form>
+					</li>
+						
+					
+					
+				</ul>
+			</div>
+		<div>
+			<div>
+				<form>
+					{% csrf_token %}
+				{%if authors%}
+				{%for i in authors%}
+				<h1>{{i.Name}}</h1>
+				<br>
+	
+				<table>
+	
+					<tr>
+						
+					</tr>
+					<tr>
+						<td>AdmissionNo</td><td>:</td><td>{{i.AdmNo}}</td>
+					</tr>
+					<tr>
+						<td>AdmissionDate</td><td>:</td><td>{{i.AdmDate}}</td>
+					</tr>
+					<tr>
+						<td>Address</td><td>:</td><td>{{i.Address}}</td>
+					</tr>
+					<tr>
+						<td>DOB</td><td>:</td><td>{{i.DOB}}</td>
+					</tr>
+					<tr>
+						<td>Gender</td><td>:</td><td>{{i.Gender}}</td>
+					</tr>
+					
+					<tr>
+						<td>Mobile</td><td>:</td><td>{{i.Mobile}}</td>
+					</tr>
+					<tr>
+						<td>Guardian</td><td>:</td><td>{{i.Guardian}}</td>
+					</tr>
+					<tr>
+						<td>Batch</td><td>:</td><td>{{i.Batch}}</td>
+					</tr>
+					<tr>
+						<td>Email</td><td>:</td><td>{{i.Email}}</td>
+					</tr>
+					<tr>
+						<td>Password</td><td>:</td><td>{{i.Password}}</td>
+					</tr>
+				</table>
+	
+	
+	
+				{%endfor %}
+				{%endif %}
+				<br><br>
+				<a href="{%url 'stud_editprofile'%}">Edit Profile</a>
+			</form>
+			</div>
+			
+		
+		</div>
+	</div>
+	</body>
+</html>
+		

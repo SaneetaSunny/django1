@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>adminhome</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+		<style>
+			table,td,th{border: 2px solid black;border-collapse: collapse;background-color: grey;text-align: center;padding:10px;}
+		</style>  
+	</head>
+	<body class="bi">
+		<div class="display">
+		<div class="navbar">
+			<h1><u>STUDENT</u></h1>
+			<ul>
+				<li> <a href="{%url 'studenthome'%}">Home</a></li>
+				<li> <a href="#">My Profile</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'stud_profile'%}">Personal details</a></li>
+							<li><a href="{%url 'viewmyattndc'%}">Atendance</a></li>
+							<li><a href="{%url 'viewmymark'%}">Mark</a></li>
+						</ul>
+				</li>
+				<li> <a href="{%url 'view_studtimetable'%}">Timetable</a></li>
+				<li> <a href="#">Leave</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'stud_applyleave'%}">Apply Leave</a></li>
+							<li><a href="{%url 'stu_appliedleave'%}">Applied Leave</a></li>
+							
+						</ul>
+						</div>
+				</li>
+				<li>
+					<form action="{% url 'logout' %}" method=POST >
+						{% csrf_token %}
+						<input type="submit" value="logout" name="logout" class="logoutbutton">
+					</form>
+				</li>
+					
+				
+				
+			</ul>
+		</div>
+		<div>
+			<h1>My Attendance</h1><br><br><br>
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Hour 1</th>
+						<th>Hour 2</th>
+						<th>Hour 3</th>
+						<th>Hour 4</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					{%if authr%}
+					{%for i in authr%}
+					<tr>
+						<td>{{i.Date}}</td>
+						<td>{{i.status_h1}}</td>
+						<td>{{i.status_h2}}</td>
+						<td>{{i.status_h3}}</td>
+						<td>{{i.status_h4}}</td>
+					</tr>
+					{%endfor %}
+			{%endif %}
+				</tbody>
+
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</body>
+</html>
+		

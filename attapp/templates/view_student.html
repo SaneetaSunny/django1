@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>facultyhome</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+		<style>
+			table,td,th{border: 2px solid black;border-collapse: collapse; padding:10px;background-color: grey;text-align: center;}
+		</style>  
+	</head>
+	<body class="bi">
+		<div class="display">
+		<div class="navbar">
+			<h1><u>FACULTY</u></h1>
+			<ul>
+				<li> <a href="{%url 'facultyhome'%}">Home</a> </li>
+				<li> <a href="{%url 'fac_profile'%}">My profile</a> </li>
+				<li> <a href="">Student Details</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'view_student'%}">Personal details</a></li>
+							<li><a href="{%url 'view_studattndc'%}">Attendance</a></li>
+							<li><a href="{%url 'view_mark'%}">Mark</a></li>
+						</ul>
+
+					</div>
+				</li>
+
+                <li> <a href="{%url 'view_timetable'%}">Timetable</a></li>
+				<li> <a href="#">Leave</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'fac_applyleave'%}">Apply Leave</a></li>
+							<li><a href="{%url 'fac_appliedleave'%}">Applied Leave</a></li>
+						</ul>
+				</li>
+				<li>
+					<form action="{% url 'logout' %}" method=POST >
+						{% csrf_token %}
+						<input type="submit" value="logout" name="logout" class="logoutbutton">
+					</form>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<h1>STUDENT DETAILS</h1>
+			<br><br>
+			
+			
+			<table>
+				<thead>
+					<tr>
+						<th>AdmNo</th>
+						<th>AdmDate</th>
+						<th>Name</th>
+						<th>Address</th>
+						<th>DOB</th>
+						<th>Gender</th>
+						<th>Mobile</th>
+						<th>Guardian</th>
+						<th>Batch</th>
+						<th>Email</th>
+					</tr>
+
+				</thead>
+				<tbody>
+					{%if authors%}
+					{%for i in authors%}
+					<tr>
+						<td>{{i.AdmNo}}</td>
+						<td>{{i.AdmDate}}</td>
+						<td>{{i.Name}}</td>
+						<td>{{i.Address}}</td>
+						<td>{{i.DOB}}</td>
+						<td>{{i.Gender}}</td>
+						<td>{{i.Mobile}}</td>
+						<td>{{i.Guardian}}</td>
+						<td>{{i.Batch}}</td>
+						<td>{{i.Email}}</td>
+					</tr>
+					{% endfor %}
+				{%endif %}
+
+				</tbody>
+			</table>
+
+		</div>
+	
+	</div>
+	</body>
+</html>
+		

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>adminhome</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+		<style>
+		</style>  
+	</head>
+	<body class="bi">
+		<div class="display">
+		<div class="navbar">
+			<h1><u>STUDENT</u></h1>
+			<ul>
+				<li> <a href="{%url 'studenthome'%}">Home</a></li>
+				<li> <a href="#">My Profile</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'stud_profile'%}">Personal details</a></li>
+							<li><a href="{%url 'viewmyattndc'%}">Atendance</a></li>
+							<li><a href="{%url 'viewmymark'%}">Mark</a></li>
+						</ul>
+					</div>
+				</li>
+				
+				<li> <a href="{%url 'view_studtimetable'%}">Timetable</a></li>
+				<li> <a href="#">Leave</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'stud_applyleave'%}">Apply Leave</a></li>
+							<li><a href="{%url 'stu_appliedleave'%}">Applied Leave</a></li>
+							
+						</ul>
+						</div>
+				</li>
+				
+				<li>
+					<form action="{% url 'logout' %}" method=POST >
+						{% csrf_token %}
+						<input type="submit" value="logout" name="logout" class="logoutbutton">
+					</form>
+				</li>
+					
+				
+				
+			</ul>
+		</div>
+	</div>
+	</body>
+</html>
+		

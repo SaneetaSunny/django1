@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>facultyhome</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+		<style>
+		</style>  
+	</head>
+	<body class="bi">
+		<div class="display">
+		<div class="navbar">
+			<h1><u>FACULTY</u></h1>
+			<ul>
+				<li> <a href="{%url 'facultyhome'%}">Home</a> </li>
+				<li> <a href="{%url 'fac_profile'%}">My profile</a> </li>
+				<li> <a href="">Student Details</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'view_student'%}">Personal details</a></li>
+							<li><a href="{%url 'view_studattndc'%}">Attendance</a></li>
+							<li><a href="{%url 'view_mark'%}">Mark</a></li>
+						</ul>
+
+					</div>
+				</li>
+
+                <li> <a href="{%url 'view_timetable'%}">Timetable</a></li>
+				<li> <a href="#">Leave</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'fac_applyleave'%}">Apply Leave</a></li>
+							<li><a href="{%url 'fac_appliedleave'%}">Applied Leave</a></li>
+						</ul>
+				</li>
+				<li>
+					<form action="{% url 'logout' %}" method=POST >
+						{% csrf_token %}
+						<input type="submit" value="logout" name="logout" class="logoutbutton">
+					</form>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<form action="{% url 'submtmrk' %}" method=POST>
+				{% csrf_token %}
+				<h1>Enter Mark</h1><br><br>
+			<table>
+				<tr>
+					<td>id</td>
+					<td>:</td>
+					<td><select name="Sid">
+						{%if authors%}
+						{%for i in authors%}
+						<option value="{{ i.Sid }}">{{ i.Sid }}</option>
+						{%endfor %}
+						{%endif %}
+					</select></td>
+				</tr>
+				<tr>
+					<td>AssessmentNo</td>
+					<td>:</td>
+					<td><select name="AssessmentNo">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Subject1</td>
+					<td>:</td>
+					<td><input type="text" name="sub1"></td>
+				</tr>
+				<tr>
+					<td>Subject2</td>
+					<td>:</td>
+					<td><input type="text" name="sub2"></td>
+				</tr>
+				<tr>
+					<td>Subject3</td>
+					<td>:</td>
+					<td><input type="text" name="sub3"></td>
+				</tr>
+			
+	</table>
+	<br>
+	<input type="submit" value="Submit" name="submtmrk" class="button">
+	</form>
+		</div>
+	</div>
+	</body>
+</html>
+		

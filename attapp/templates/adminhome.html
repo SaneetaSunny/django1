@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>adminhome</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+		<style>
+		</style>  
+	</head>
+	<body class="bi">
+		<div class="display">
+		<div class="navbar">
+			<h1><u>ADMIN</u></h1>
+			<ul>
+				<li> <a href="{%url 'adminhome'%}">Home</a> </li>
+				<li> <a href="{%url 'faculty_signup'%}">Add Faculty</a> </li>
+				<li> <a href="{%url 'student_signup'%}">Add Student</a> </li>
+				<li> <a href="#">Student Details</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'stu_details'%}">Personal details</a></li>
+							<li><a href="{%url 'stu_attndc'%}">Atendance</a></li>
+							<li><a href="{%url 'stu_mark'%}">Mark</a></li>
+						</ul>
+
+					</div>
+				</li>
+				<li> <a href="#">Faculty Details</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'fac_details'%}">Personal details</a></li>
+							<li><a href="{%url 'fac_attndc'%}">Attendance</a></li>
+							
+						</ul>
+
+					</div>
+				</li>
+				<li> <a href="{%url 'timetable'%}">Timetable</a></li>
+				<li><a href="#">Leave Management</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'fac_leave'%}">Faculty Leave</a></li>
+							<li><a href="{%url 'stu_leave'%}">Student Leave</a></li>
+						</ul>
+
+					</div>
+				</li>
+				<li>
+					<form action="{% url 'logout' %}" method=POST >
+						{% csrf_token %}
+						<input type="submit" value="logout" name="logout" class="logoutbutton">
+					</form>
+				</li>
+			</ul>
+			</div>
+			
+</div>
+	</body>
+</html>
+		

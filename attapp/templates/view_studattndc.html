@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>facultyhome</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+		<style>
+		</style>  
+	</head>
+	<body class="bi">
+		<div class="display">
+		<div class="navbar">
+			<h1><u>FACULTY</u></h1>
+			<ul>
+				<li> <a href="{%url 'facultyhome'%}">Home</a> </li>
+				<li> <a href="{%url 'fac_profile'%}">My profile</a> </li>
+				<li> <a href="">Student Details</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'view_student'%}">Personal details</a></li>
+							<li><a href="{%url 'view_studattndc'%}">Attendance</a></li>
+							<li><a href="{%url 'view_mark'%}">Mark</a></li>
+						</ul>
+
+					</div>
+				</li>
+
+                <li> <a href="{%url 'view_timetable'%}">Timetable</a></li>
+				<li> <a href="#">Leave</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'fac_applyleave'%}">Apply Leave</a></li>
+							<li><a href="{%url 'fac_appliedleave'%}">Applied Leave</a></li>
+						</ul>
+				</li>
+				<li>
+					<form action="{% url 'logout' %}" method=POST >
+						{% csrf_token %}
+						<input type="submit" value="logout" name="logout" class="logoutbutton">
+					</form>
+				</li>
+			</ul>
+		</div>
+		<div>
+			
+
+			<h1>Enter Attendance</h1>	<br><br>			
+
+			<form action="{% url 'attsub' %}" method=POST>
+				{% csrf_token %}
+				<table>
+					<tr>
+						<td>StudentId</td>
+						<td>:</td>
+						<td><select name="sid">
+							{%if author%}
+							{%for i in author%}
+							<option value="{{ i.Sid }}">{{ i.Sid }}</option>
+							{%endfor %}
+							{%endif %}
+						</select>
+						</td>
+						</tr>
+						<tr>
+							<td>Date</td>
+							<td>:</td>
+							<td><input type="text" name="date" placeholder="yyyy-mm-dd"></td>
+						</tr>
+						<tr>
+							<td>Hour1 Status</td>
+							<td>:</td>
+							<td><select name="hr1">
+								<option value="present">present</option>
+								<option value="absent">absent</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td>Hour2 Status</td>
+							<td>:</td>
+							<td><select name="hr2">
+								<option value="present">present</option>
+								<option value="absent">absent</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td>Hour3 Status</td>
+							<td>:</td>
+							<td><select name="hr3">
+								<option value="present">present</option>
+								<option value="absent">absent</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td>Hour4 Status</td>
+							<td>:</td>
+							<td><select name="hr4">
+								<option value="present">present</option>
+								<option value="absent">absent</option>
+							</select></td>
+						</tr>
+
+				</table><br>
+				
+				<input type="submit" name="attsub" value="Submit" class="button">
+
+			</form>
+			<br><br><br>
+
+	
+			
+		</div>
+		<div>
+			
+		</div>
+	</div>
+	</body>
+</html>
+		

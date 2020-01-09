@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Login
+		</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+		<style>
+		</style>
+	</head>
+	<body class="bi">
+		<br><br><br>
+		<form action="{% url 'subt' %}" method=POST>
+			{% csrf_token %}
+	<div class="logcont">
+		<h1>LOGIN</h1><br>
+	<input type="text" placeholder="UserName" name="username"class="frm"><br><br>
+	<input type="password" placeholder="Password" name="password"class="frm"><br><br>
+	<input type="submit" placeholder="Login"class="button" name="subt">
+	</div>
+		</form>
+	</body>
+</html>
+	

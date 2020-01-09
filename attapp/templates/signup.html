@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Login
+		</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">		
+		<style>
+		</style>
+	</head>
+	<body class="bi">
+		<div class="navbar">
+			<ul>
+				<li> <a href="{%url 'login'%}">Login</a> </li>
+				<li> <a href="{%url 'signup'%}">Signup</a> </li>
+			</ul>
+		</div>
+		<div class="cont">
+		<form action="{% url 'submit' %}" method=POST>
+			{% csrf_token %}
+			<input type="text" placeholder="UserName" name="username"class="frm" ><br><br>
+			<input type="text" placeholder="E-Mail" name="email"class="frm"><br><br>
+			<input type="text" placeholder="Password" name="password" class="frm"><br><br>
+			<input type="text" placeholder="Mobile No" name="mobile" class="frm"><br><br>
+			<input type="submit" placeholder="SignUp" class="button">
+		</form>
+		</div>
+	</body>
+</html>
+	

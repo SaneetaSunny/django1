@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>facultyhome</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+		<style>
+			table,td,th{border: 2px solid black;border-collapse: collapse;background-color: grey;text-align: center;padding:10px;}
+		</style>  
+	</head>
+	<body class="bi">
+		
+		<div class="display">
+		<div class="navbar">
+			<h1><u>FACULTY</u></h1>
+			<ul>
+				<li> <a href="{%url 'facultyhome'%}">Home</a> </li>
+				<li>
+						<a href="{%url 'fac_profile'%}">My profile</a>
+				</li>
+				<li> <a href="">Student Details</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'view_student'%}">Personal details</a></li>
+							<li><a href="{%url 'view_studattndc'%}">Attendance</a></li>
+							<li><a href="{%url 'view_mark'%}">Mark</a></li>
+						</ul>
+
+					</div>
+				</li>
+
+                <li> <a href="{%url 'view_timetable'%}">Timetable</a></li>
+				<li> <a href="#">Leave</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'fac_applyleave'%}">Apply Leave</a></li>
+							<li><a href="{%url 'fac_appliedleave'%}">Applied Leave</a></li>
+						</ul>
+						</div>
+				</li>
+					
+				<li>
+					<form action="{% url 'logout' %}" method=POST >
+						{% csrf_token %}
+						<input type="submit" value="logout" name="logout" class="logoutbutton">
+					</form>
+				</li>
+			</ul>
+		</div>
+		<div>
+
+            <div>
+                <h1>Applied Leave Details</h1>
+                <br><br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>FromDate</th>
+                            <th>ToDate</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            
+                        </tr>
+    
+                    </thead>
+                    <tbody>
+                        {%if a%}
+                        {%for i in a%}
+                        <tr>
+                            <td>{{i.Fromdate}}</td>
+                            <td>{{i.Todate}}</td>
+                            <td>{{i.Reason}}</td>
+                            <td>{{i.Status}}</td>
+                        </tr>
+                        {% endfor %}
+                    {%endif %}
+    
+                    </tbody>
+                </table>
+    
+            </div>
+        
+			
+		</div>
+	</div>
+	</body>
+</html>
+		

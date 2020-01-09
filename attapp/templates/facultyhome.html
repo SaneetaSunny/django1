@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>facultyhome</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+		<style>
+		</style>  
+	</head>
+	<body class="bi">
+		
+		<div class="display">
+		<div class="navbar">
+			<h1><u>FACULTY</u></h1>
+			<ul>
+				<li> <a href="{%url 'facultyhome'%}">Home</a> </li>
+				<li>
+						<a href="{%url 'fac_profile'%}">My profile</a>
+				</li>
+				<li> <a href="">Student Details</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'view_student'%}">Personal details</a></li>
+							<li><a href="{%url 'view_studattndc'%}">Attendance</a></li>
+							<li><a href="{%url 'view_mark'%}">Mark</a></li>
+						</ul>
+
+					</div>
+				</li>
+
+                <li> <a href="{%url 'view_timetable'%}">Timetable</a></li>
+				<li> <a href="#">Leave</a>
+					<div class="submenu">
+						<ul>
+							<li><a href="{%url 'fac_applyleave'%}">Apply Leave</a></li>
+							<li><a href="{%url 'fac_appliedleave'%}">Applied Leave</a></li>
+						</ul>
+				</li>
+				<li>
+					<form action="{% url 'logout' %}" method=POST >
+						{% csrf_token %}
+						<input type="submit" value="logout" name="logout" class="logoutbutton">
+					</form>
+				</li>
+			</ul>
+		</div>
+		<div>
+			
+		</div>
+	</div>
+	</body>
+</html>
+		
